@@ -22,6 +22,7 @@ export default function App() {
         
         try {
             setIsLoading(true);
+             setMovies([]);
             setIsError('');
             const result = await fetchMovies(queryValue);
             
@@ -33,8 +34,12 @@ export default function App() {
             });
             }
             setMovies(result)
-        } catch {
-            setIsError('')
+        } catch (error) {
+            if (error instanceof Error) {
+                setIsError(error.message);
+            } else {
+                toast.error("Failed to fetch movies. Try again later.");
+            }
         } finally {
             setIsLoading(false)
         }

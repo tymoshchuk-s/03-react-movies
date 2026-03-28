@@ -5,11 +5,9 @@ interface SearchBarProps {
     onSubmit: (queryValue: string) => void;
 }
 
-let queryValue = '';
-
 export default function SearchBar({onSubmit}: SearchBarProps) {
     const handleSubmit = (formData: FormData): void => {
-        queryValue = (formData.get('query') as string)?.trim();
+        const queryValue = (formData.get('query') as string)?.trim();
 
 if (queryValue.trim() === '') {
             toast('Please enter your search query.', {
