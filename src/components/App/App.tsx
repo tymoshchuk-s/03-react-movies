@@ -42,7 +42,7 @@ export default function App() {
 
     return (
         <div className={styles.app}>
-            <SearchBar onSearch={handleSearch} />
+            <SearchBar onSubmit={handleSearch} />
             <Toaster position="top-center" />
             {isLoading && <Loader/>}
             {isError && <ErrorMessage message={isError}/>}
